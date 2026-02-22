@@ -31,6 +31,59 @@ A super simple FastAPI application that allows students to view and sign up for 
 | ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
 | GET    | `/activities`                                                     | Get all activities with their details and current participant count |
 | POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
+| DELETE | `/activities/{activity_name}/participants?email=student@mergington.edu` | Unregister a participant from an activity                           |
+
+### Example: Sign Up a Student
+
+Request:
+
+```
+POST /activities/Chess%20Club/signup?email=alex@mergington.edu
+```
+
+curl:
+
+```bash
+curl -X POST "http://localhost:8000/activities/Chess%20Club/signup?email=alex@mergington.edu"
+```
+
+Response:
+
+```json
+{
+   "message": "Signed up alex@mergington.edu for Chess Club"
+}
+```
+
+### Example: Unregister a Student
+
+Request:
+
+```
+DELETE /activities/Chess%20Club/participants?email=alex@mergington.edu
+```
+
+curl:
+
+```bash
+curl -X DELETE "http://localhost:8000/activities/Chess%20Club/participants?email=alex@mergington.edu"
+```
+
+Response:
+
+```json
+{
+   "message": "Unregistered alex@mergington.edu from Chess Club"
+}
+```
+
+## Run Tests
+
+Run the backend test suite with:
+
+```
+python -m pytest -q
+```
 
 ## Data Model
 
